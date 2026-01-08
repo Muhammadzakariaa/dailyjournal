@@ -153,12 +153,13 @@ body .dark-mode{
 }
 
 
+/* FOTO WRAPPER */
 .foto-wrapper {
-  width: 295px;
-  height: 295px;
+  width: clamp(160px, 30vw, 295px); /* ukuran fleksibel: HP → 160px, desktop max 295px */
+  aspect-ratio: 1 / 1;              /* selalu kotak / lingkaran */
   background-color: #4da3ff;
   border-radius: 50%;
-  overflow: hidden; /* WAJIB */
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -167,16 +168,39 @@ body .dark-mode{
 
 .dark-mode .foto-wrapper:hover {
   transform: translateY(-5px);
-  box-shadow:
-  0 0 6px rgba(255, 193, 7, 0.45),
-  0 0 30px rgba(255, 193, 7, 0.45);
-
+  box-shadow: 0 0 6px rgba(255, 193, 7, 0.45),
+              0 0 30px rgba(255, 193, 7, 0.45);
 }
 
 .foto-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* MEDIA QUERY UNTUK HP & TABLET */
+@media (max-width: 1024px) {
+  /* paksa row About Me menjadi kolom */
+  #about-me .row {
+    flex-direction: column;
+    align-items: center; /* center semua elemen */
+  }
+
+  /* kolom foto dan card full width */
+  #about-me .col-md-4,
+  #about-me .col-md-6 {
+    max-width: 100%;
+  }
+
+  /* jarak bawah foto */
+  #about-me .col-md-4 {
+    margin-bottom: 20px;
+  }
+
+  /* text card center */
+  #about-me .card {
+    text-align: center;
+  }
 }
 
 footer .social-icons a i:hover{
