@@ -475,8 +475,8 @@ footer .social-icons a i:hover{
 
       <!-- Minggu -->
       <div class="col-md-3 d-flex justify-content-center">
-        <div class="card w-100 h-100 shadow-sm border border-warning">
-          <div class="card-header bg-warning text-white text-center">
+        <div class="card w-100 h-100 shadow-sm border border-danger">
+          <div class="card-header bg-danger text-white text-center">
             Minggu
           </div>
           <div class="card-body text-center">
