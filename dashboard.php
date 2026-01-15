@@ -6,8 +6,12 @@ $hasil1 = $conn->query($sql1);
 //menghitung jumlah baris data article
 $jumlah_article = $hasil1->num_rows;
 
+// menghitung jumlah data gallery
+$sql2 = "SELECT * FROM gallery";
+$hasil2 = $conn->query($sql2);
 
-
+//menghitung jumlah baris data gallery
+$jumlah_gallery = $hasil2->num_rows;
 
 
 ?>
@@ -34,7 +38,7 @@ $jumlah_article = $hasil1->num_rows;
                         <h5 class="card-title"><i class="bi bi-camera"></i> Gallery</h5> 
                     </div>
                     <div class="p-3">
-                        <span class="badge rounded-pill text-bg-danger fs-2"><?php echo "5" ?></span>
+                        <span class="badge rounded-pill text-bg-danger fs-2"><?php echo $jumlah_gallery ?></span>
                     </div> 
                 </div>
             </div>
