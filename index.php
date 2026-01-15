@@ -548,7 +548,7 @@ footer .social-icons a i:hover{
 
 //Typing mengetik
   var typed = new Typed("#typing-text",{
-  strings:["My Name is Muhammad Zakaria Putranto","Welcome to My Daily Journal ","This is My Daily Activities"],
+  strings:["I am Muhammad Zakaria Putranto","Welcome to My Daily Journal "],
   typeSpeed: 55,
   backSpeed: 50,
   backDelay: 1000,
