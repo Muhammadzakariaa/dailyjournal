@@ -30,11 +30,11 @@ $stmt->close();
     }
     
     .profile-photo-dashboard {
-        width: 250px;
-        height: 250px;
+        width: 160px;
+        height: 160px;
         border-radius: 50%;
         object-fit: cover;
-        border: 5px solid #e0e0e0;
+        border: 5px solid #20bd3d;
         margin: 20px auto;
         display: block;
     }
@@ -60,8 +60,8 @@ $stmt->close();
     }
     
     .stat-card {
-        width: 280px;
-        border: 2px solid #e0e0e0;
+        width: 230px;
+        border: 2px solid #dc3545;
         border-radius: 10px;
         padding: 30px;
         background: white;
