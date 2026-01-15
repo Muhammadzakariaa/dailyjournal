@@ -26,15 +26,15 @@ $stmt->close();
 <style>
     .profile-section {
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 10px;
     }
     
     .profile-photo-dashboard {
-        width: 160px;
-        height: 160px;
+        width: 200px;
+        height: 170px;
         border-radius: 50%;
         object-fit: cover;
-        border: 5px solid #20bd3d;
+        border: 4px solid #dee2e6;
         margin: 20px auto;
         display: block;
     }
@@ -42,14 +42,14 @@ $stmt->close();
     .welcome-text {
         color: #666;
         font-size: 1.2rem;
-        margin-bottom: 10px;
+        margin-bottom: 2px;
     }
     
     .username-text {
-        color: #dc3545;
+        color: #198754;
         font-size: 2rem;
         font-weight: bold;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
     }
     
     .dashboard-cards {
@@ -60,8 +60,8 @@ $stmt->close();
     }
     
     .stat-card {
-        width: 230px;
-        border: 2px solid #dc3545;
+        width: 260px;
+        border: 2px solid  #198754;
         border-radius: 10px;
         padding: 30px;
         background: white;
@@ -95,7 +95,7 @@ $stmt->close();
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        background: #dc3545;
+        background: #198754;
         color: white;
         display: flex;
         align-items: center;
