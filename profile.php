@@ -109,9 +109,8 @@ if (isset($_POST['update_profile'])) {
 <body>
 
 
-<section id="content" class="p-5">
+<section id="content" class="p-1">
 <div class="container">
-<h4 class="border-bottom pb-2 mb-4">Profile</h4>
 
 <?php if($message): ?>
 <div class="alert alert-<?= $messageType ?>"><?= $message ?></div>
@@ -126,7 +125,7 @@ if (isset($_POST['update_profile'])) {
 
 <div class="mb-3">
 <label class="form-label">Ganti Password</label>
-<input type="password" class="form-control" name="password">
+<input type="password" placeholder="Tuliskan Password Baru Jika Ingin Mengganti Password Saja" class="form-control" name="password">
 </div>
 
 <div class="mb-3">
