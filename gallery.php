@@ -35,12 +35,12 @@
             </table>
         </div>
 
-        <!-- Modal Tambah Article -->
+        <!-- Modal Tambah Gallery -->
          <div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalTambahLabel">Tambah Article</h1>
+        <h1 class="modal-title fs-5" id="modalTambahLabel">Tambah Gallery</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -48,11 +48,11 @@
              <div class="modal-body">
             				<div class="mb-3">
 							<label for="judul" class="form-label">Judul</label>
-                            <input type="text" class="form-control" name="judul" placeholder="Tuliskan Judul Artikel" required>
+                            <input type="text" class="form-control" name="judul" placeholder="Tuliskan Judul Gallery" required>
                         </div>
                         <div class="mb-3">
                             <label for="isi">Deskripsi</label>
-                            <textarea class="form-control" placeholder="Tuliskan Isi Artikel" name="isi" required></textarea>
+                            <textarea class="form-control" placeholder="Tuliskan Deskripsi Gallery" name="isi" required></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="gambar" class="form-label">Gambar</label>
