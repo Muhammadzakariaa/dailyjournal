@@ -8,8 +8,7 @@ include "koneksi.php";
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> My Daily Journal | Home</title>
-    <link rel="icon" href="image/logo.png"/>
+    <title>Pemandangan Alam Indonesia Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     
      <!-- Script Typing -->
@@ -49,14 +48,13 @@ include "koneksi.php";
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(79, 68, 235, 0.2);
+  box-shadow: 0 6px 12px rgba(234, 217, 112, 0.2);
 }
 
 .dark-mode .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(255, 193, 7, 0.45);
+  box-shadow: 0 4px 8px rgba(255, 193, 7, 0.35);
 }
-
 
 /* ====== GALLERY ====== */
 
@@ -101,9 +99,32 @@ footer p {
   .navbar-nav .nav-item button {
     margin-bottom: 10px !important;
   }
-
 }
 
+/* MEDIA QUERY UNTUK HP & TABLET */
+@media (max-width: 1024px) {
+  /* paksa row About Me menjadi kolom */
+  #about-me .row {
+    flex-direction: column;
+    align-items: center; /* center semua elemen */
+  }
+
+  /* kolom foto dan card full width */
+  #about-me .col-md-4,
+  #about-me .col-md-6 {
+    max-width: 100%;
+  }
+
+  /* jarak bawah foto */
+  #about-me .col-md-4 {
+    margin-bottom: 30px;
+  }
+
+  /* text card center */
+  #about-me .card {
+    text-align: center;
+  }
+}
 
 body .dark-mode{
    background: #1a1a1a !important;
@@ -179,30 +200,8 @@ body .dark-mode{
   object-fit: cover;
 }
 
-/* MEDIA QUERY UNTUK HP & TABLET */
-@media (max-width: 1024px) {
-  /* paksa row About Me menjadi kolom */
-  #about-me .row {
-    flex-direction: column;
-    align-items: center; /* center semua elemen */
-  }
 
-  /* kolom foto dan card full width */
-  #about-me .col-md-4,
-  #about-me .col-md-6 {
-    max-width: 100%;
-  }
 
-  /* jarak bawah foto */
-  #about-me .col-md-4 {
-    margin-bottom: 20px;
-  }
-
-  /* text card center */
-  #about-me .card {
-    text-align: center;
-  }
-}
 
 footer .social-icons a i:hover{
     color: yellow  !important;
@@ -211,10 +210,10 @@ footer .social-icons a i:hover{
     </style>
 
   </head>
-  <body>
+  <body class="pt-5">
 
     <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
   <div class="container-fluid">
     
     <a class="navbar-brand" href="#">
@@ -282,6 +281,7 @@ footer .social-icons a i:hover{
     </div>
   </div>
   <div class="mb-5"></div>
+  <br>
 </section>
 
 
@@ -322,35 +322,52 @@ footer .social-icons a i:hover{
 
 <!-- GALLERY SECTION -->
 <section id="gallery" class="gallery py-5 bg-light">
-  <div class="container">
-    <h2 class="text-center mb-4">Gallery</h2>
+  <div class="container mt-5">
+    <h2 class="text-center fw-bold mb-4">Gallery</h2>
+
+    <?php
+    $sql = "SELECT * FROM gallery ORDER BY id DESC";
+    $hasil = $conn->query($sql);
+    ?>
+
     <div id="galleryCarousel" class="carousel slide" data-bs-ride="false">
       <div class="carousel-inner rounded-4">
-        <div class="carousel-item active">
-          <img src="image/pantai.jpg" id="pantai" class="d-block w-100" alt="pantai">
-        </div>
-        <div class="carousel-item">
-          <img src="image/hutan.jpg" id="hutan" class="d-block w-100" alt="hutan">
-        </div>
-        <div class="carousel-item">
-          <img src="image/kawah.jpg" id="kawah" class="d-block w-100" alt="kawah">
-        </div>
-        <div class="carousel-item">
-          <img src="image/matahari.jpg" id="matahari" class="d-block w-100" alt="matahari">
-        </div>
-        <div class="carousel-item">
-          <img src="image/sungai.jpg" id="sungai" class="d-block w-100" alt="sungai">
-        </div>
+
+        <?php
+        $active = "active"; // item pertama aktif
+        while ($row = $hasil->fetch_assoc()) {
+        ?>
+          <div class="carousel-item <?= $active; ?>">
+            <img 
+              src="image/<?= $row['gambar']; ?>" 
+              class="d-block w-100"
+              alt="<?= $row['judul']; ?>"
+            >
+
+            <?php if (!empty($row['judul'])) { ?>
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-3">
+              <h5><?= $row['judul']; ?></h5>
+            </div>
+            <?php } ?>
+          </div>
+        <?php
+          $active = ""; // setelah loop pertama
+        }
+        ?>
+
       </div>
+
       <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="carousel-control-prev-icon"></span>
         <span class="visually-hidden">Previous</span>
       </button>
+
       <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="carousel-control-next-icon"></span>
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+
   </div>
 </section>
 
@@ -475,9 +492,9 @@ footer .social-icons a i:hover{
 
 <!-- ABOUT ME SECTION -->
  <section id="about-me" class="about-me py-5 bg-light">
-  <div class="container">
+  <div class="container  mt-5">
     <h2 class="text-center mb-4 fw-bold">About Me</h2>
-    <div class="row align-items-center justify-content-center g-5">
+    <div class="row align-items-center justify-content-center">
 
     <!-- FOTO -->
     <div class="col-md-4 text-center mb-4 mb-md-0">
@@ -488,7 +505,7 @@ footer .social-icons a i:hover{
 
     <!-- CARD DATA -->
     <div class="col-md-6">
-      <div class="card shadow border-0 p-4">
+      <div class="card shadow border-0 p-4 mb-3">
         <h3 class="fw-bold">Muhammad Zakaria Putranto</h3>
         <p class="major text-muted">Mahasiswa Teknik Informatika</p>
 
@@ -507,7 +524,7 @@ footer .social-icons a i:hover{
 
  
 <!-- FOOTER -->
-<footer class="bg-dark text-center py-4">
+<footer class="bg-dark  text-center py-3">
   <div class="container">
     <div class="social-icons">
 				<a href="https://www.instagram.com/zzacky_08?igsh=OHg0c2s1cWxhMnRr"><i class="bi bi-instagram h2 p-2 text-dark"></i></a>
@@ -531,7 +548,7 @@ footer .social-icons a i:hover{
 
 //Typing mengetik
   var typed = new Typed("#typing-text",{
-  strings:["My Name is Muhammad Zakaria Putranto","Welcome to My Daily Journal "],
+  strings:["My Name is Muhammad Zakaria Putranto","Welcome to My Daily Journal ","This is My Daily Activities"],
   typeSpeed: 55,
   backSpeed: 50,
   backDelay: 1000,
